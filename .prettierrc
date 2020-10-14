@@ -1,0 +1,9 @@
+{
+	"eslintIntegration": true,
+	"trailingComma": "none",
+  "singleQuote": true,
+  "semi": false,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+	"vetur.format.defaultFormatter.js": "vscode-typescript",
+	"arrowParens": "avoid"
+}
