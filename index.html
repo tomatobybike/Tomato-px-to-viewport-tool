@@ -66,7 +66,10 @@
             (100 / $('#pc .viewportWidth').val().replace(/px/g, '')) *
             $('#pc .pxValue').val()
           pcResult = formatDecimal(pcResult)
+					var pcResultVh = (100 / $('#pc .viewportWidthVh').val().replace(/px/g, '')) *
+            $('#pc .pxValueVh').val()
           $('#pc .result').html(`${pcResult}vw`)
+          $('#pc .resultVh').html(`${pcResultVh}vh`)
           var mobileResult =
             (100 / $('#mobile .viewportWidth').val().replace(/px/g, '')) *
             $('#mobile .pxValue').val()
@@ -156,6 +159,41 @@
                   <label class="weui-label">结果</label>
                 </div>
                 <div class="weui-cell__bd orange result"></div>
+              </div>
+            </div>
+						<div class="weui-cells weui-cells_form">
+              <div class="weui-cell weui-cell_active">
+                <div class="weui-cell__hd">
+                  <label class="weui-label">viewportHeight</label>
+                </div>
+                <div class="weui-cell__bd">
+                  <input
+                    id="js_input_vh"
+                    class="weui-input viewportWidthVh"
+                    placeholder="填写本人微信号"
+                    value="1080px"
+                    readonly
+                  />
+                </div>
+              </div>
+              <div class="weui-cell weui-cell_active">
+                <div class="weui-cell__hd">
+                  <label class="weui-label">像素</label>
+                </div>
+                <div class="weui-cell__bd">
+                  <input
+                    id="js_input"
+                    class="weui-input pxValueVh"
+                    placeholder="像素"
+                    value="100"
+                  />
+                </div>
+              </div>
+              <div class="weui-cell weui-cell_active">
+                <div class="weui-cell__hd">
+                  <label class="weui-label">结果</label>
+                </div>
+                <div class="weui-cell__bd orange resultVh"></div>
               </div>
             </div>
           </div>
