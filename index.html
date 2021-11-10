@@ -66,7 +66,8 @@
             (100 / $('#pc .viewportWidth').val().replace(/px/g, '')) *
             $('#pc .pxValue').val()
           pcResult = formatDecimal(pcResult)
-					var pcResultVh = (100 / $('#pc .viewportWidthVh').val().replace(/px/g, '')) *
+          var pcResultVh =
+            (100 / $('#pc .viewportWidthVh').val().replace(/px/g, '')) *
             $('#pc .pxValueVh').val()
           $('#pc .result').html(`${pcResult}vw`)
           $('#pc .resultVh').html(`${pcResultVh}vh`)
@@ -75,6 +76,17 @@
             $('#mobile .pxValue').val()
           mobileResult = formatDecimal(mobileResult)
           $('#mobile .result').html(`${mobileResult}vw`)
+
+          var autoResult =
+            (100 / $('#autoSizeView .viewportWidth').val().replace(/px/g, '')) *
+            $('#autoSizeView .pxValue').val()
+          autoResult = formatDecimal(autoResult)
+          var autoResultVh =
+            (100 /
+              $('#autoSizeView .viewportWidthVh').val().replace(/px/g, '')) *
+            $('#autoSizeView .pxValueVh').val()
+          $('#autoSizeView .result').html(`${autoResult}vw`)
+          $('#autoSizeView .resultVh').html(`${autoResultVh}vh`)
         }
         $('#run').on('click', function () {
           getResult()
@@ -161,7 +173,7 @@
                 <div class="weui-cell__bd orange result"></div>
               </div>
             </div>
-						<div class="weui-cells weui-cells_form">
+            <div class="weui-cells weui-cells_form">
               <div class="weui-cell weui-cell_active">
                 <div class="weui-cell__hd">
                   <label class="weui-label">viewportHeight</label>
@@ -238,6 +250,80 @@
             </div>
           </div>
         </div>
+        <div id="autoSizeView" class="weui-form__control-area">
+          <div class="weui-cells__group weui-cells__group_form">
+            <div class="weui-cells__title">自定义</div>
+            <div class="weui-cells weui-cells_form">
+              <div class="weui-cell weui-cell_active">
+                <div class="weui-cell__hd">
+                  <label class="weui-label">viewportWidth</label>
+                </div>
+                <div class="weui-cell__bd">
+                  <input
+                    id="autoSizeInput"
+                    class="weui-input viewportWidth"
+                    placeholder="填写像素"
+                    value="750px"
+                  />
+                </div>
+              </div>
+              <div class="weui-cell weui-cell_active">
+                <div class="weui-cell__hd">
+                  <label class="weui-label">像素</label>
+                </div>
+                <div class="weui-cell__bd">
+                  <input
+                    id="js_input"
+                    class="weui-input pxValue"
+                    placeholder="像素"
+                    value="30"
+                  />
+                </div>
+              </div>
+              <div class="weui-cell weui-cell_active">
+                <div class="weui-cell__hd">
+                  <label class="weui-label">结果</label>
+                </div>
+                <div class="weui-cell__bd orange result"></div>
+              </div>
+            </div>
+            <div class="weui-cells weui-cells_form">
+              <div class="weui-cell weui-cell_active">
+                <div class="weui-cell__hd">
+                  <label class="weui-label">viewportHeight</label>
+                </div>
+                <div class="weui-cell__bd">
+                  <input
+                    id="autoSizeInput"
+                    class="weui-input viewportWidthVh"
+                    placeholder="填写像素"
+                    value="750px"
+                  />
+                </div>
+              </div>
+              <div class="weui-cell weui-cell_active">
+                <div class="weui-cell__hd">
+                  <label class="weui-label">像素</label>
+                </div>
+                <div class="weui-cell__bd">
+                  <input
+                    id="js_input"
+                    class="weui-input pxValueVh"
+                    placeholder="像素"
+                    value="30"
+                  />
+                </div>
+              </div>
+              <div class="weui-cell weui-cell_active">
+                <div class="weui-cell__hd">
+                  <label class="weui-label">结果</label>
+                </div>
+                <div class="weui-cell__bd orange resultVh"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="weui-form__opr-area">
           <a class="weui-btn weui-btn_primary" href="javascript:" id="run"
             >确定</a
@@ -245,22 +331,21 @@
         </div>
       </div>
     </div>
-		<div class="page" style="margin:20px 0">
-			<div class="page__bd page__bd_spacing">
-				<table>
-					<thead>
-						<tr>
-							<th>px(桌面1920)</th>
-							<th>vw(桌面)</th>
-							<th>px(移动750)</th>
-							<th>vw(移动)</th>
-						</tr>
-					</thead>
-					<tbody id="listTable"></tbody>
-				</table>
-			</div>
-		</div>
-
+    <div class="page" style="margin: 20px 0">
+      <div class="page__bd page__bd_spacing">
+        <table>
+          <thead>
+            <tr>
+              <th>px(桌面1920)</th>
+              <th>vw(桌面)</th>
+              <th>px(移动750)</th>
+              <th>vw(移动)</th>
+            </tr>
+          </thead>
+          <tbody id="listTable"></tbody>
+        </table>
+      </div>
+    </div>
 
     <script id="tpl-list" type="text/html">
       {{if list.length>=0}} {{each list}}
